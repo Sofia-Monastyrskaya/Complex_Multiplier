@@ -125,7 +125,7 @@ module compl_mul_round_tb;
         data_a_q_i = 18'sh0_0000; 
         data_b_i_i = 18'sh1_FFFF; 
         data_b_q_i = 18'sh0_0000; 
-        #10;
+        #10; 
         $display("Test 7: (131071+j0)*(131071+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test Case 8
