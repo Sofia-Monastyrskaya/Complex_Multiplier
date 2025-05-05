@@ -117,7 +117,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh3_5000; 
         data_b_q_i = 18'sh1_8000; 
         #10;
-        $display("Test 6: (-131071-j43690)*(-1.3125+j98304) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 6: (-131071-j43690)*(-1.3125+j1.5) = %d + j%d", data_i_o, data_q_o);
 
         // Test 7
         #10;
@@ -126,7 +126,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_FFFF; 
         data_b_q_i = 18'sh0_0000; 
         #10; 
-        $display("Test 7: (131071+j0)*(131071+j0) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 7: (131071+j0)*(1.9999+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test Case 8
         #10;
