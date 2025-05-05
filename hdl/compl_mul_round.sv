@@ -35,7 +35,7 @@ module compl_mul_round(
     logic [33:0] prod_ii, prod_iq, prod_qi, prod_qq;//17+17 бит для умножения
     logic       prod_ii_sign,prod_iq_sign,prod_qi_sign,prod_qq_sign;//биты для хранения знака после умножения
     
-    logic [35:0]prod_ii_c, prod_iq_c, prod_qi_c,prod_qq_c;
+    logic [34:0]prod_ii_c, prod_iq_c, prod_qi_c,prod_qq_c;
     logic [34:0] result_i_c, result_q_c;
    
     logic [34:0] result_i, result_q;
