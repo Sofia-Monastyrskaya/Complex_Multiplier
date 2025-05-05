@@ -35,7 +35,7 @@ module compl_mul_round_tb;
     logic signed [18:0] data_q_o;
     
     // Instantiate the Unit Under Test (UUT)
-    compl_mul_round uut (
+    compl_mul_round dut (
         .clk_i(clk_i),
         .srst_i(srst_i),
         .data_a_i_i(data_a_i_i),
