@@ -72,7 +72,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_0000; 
         data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 1: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 1: (1+j0)*(1+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test 2
         #10;
@@ -81,7 +81,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_0000; 
         data_b_q_i = 18'sh1_0000; 
         #10;
-        $display("Test 2: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 2: (1+j1)*(1+j1) = %d + j%d", data_i_o, data_q_o);
         
         // Test 3
         #10;
@@ -90,7 +90,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_5000; 
         data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 3: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 3: (24+j0)*(1.3125+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test 4
         #10;
@@ -99,7 +99,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_5000; 
         data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 4: (0.5+j0.5)*(0.5+j0.5) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 4: (-24+j0)*(1.3125+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test 5
         #10;
@@ -108,7 +108,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh3_5000; 
         data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 5: Rounding test = %d + j%d", data_i_o, data_q_o);
+        $display("Test 5: (24+j0)*(-1.3125+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test 6
         #10;
@@ -117,7 +117,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh3_5000; 
         data_b_q_i = 18'sh1_8000; 
         #10;
-        $display("Test 6: Max values = %d + j%d", data_i_o, data_q_o);
+        $display("Test 6: (-131071-j43690)*(-1.3125+j98304) = %d + j%d", data_i_o, data_q_o);
 
         // Test 7
         #10;
@@ -126,7 +126,7 @@ module compl_mul_round_tb;
         data_b_i_i = 18'sh1_FFFF; 
         data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 7: Max values = %d + j%d", data_i_o, data_q_o);
+        $display("Test 7: (131071+j0)*(131071+j0) = %d + j%d", data_i_o, data_q_o);
         
         // Test Case 8
         #10;
