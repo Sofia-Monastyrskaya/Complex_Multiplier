@@ -38,13 +38,13 @@ module compl_mul(
    
    
    
-   logic signed [35:0] prod_ii_c, prod_iq_c, prod_qi_c, prod_qq_c;
+   logic signed [35:0] prod_ii, prod_iq, prod_qi, prod_qq;
    
    
-   assign prod_ii_c = data_a_i_i * data_b_i_i;
-   assign prod_qq_c = data_a_q_i * data_b_q_i;
-   assign prod_iq_c= data_a_i_i * data_b_q_i;
-   assign prod_qi_c= data_a_q_i * data_b_i_i;
+   assign prod_ii = data_a_i_i * data_b_i_i;
+   assign prod_qq = data_a_q_i * data_b_q_i;
+   assign prod_iq = data_a_i_i * data_b_q_i;
+   assign prod_qi = data_a_q_i * data_b_i_i;
    
    always_ff@(posedge clk_i) begin
        if(srst_i)begin
@@ -52,8 +52,8 @@ module compl_mul(
            data_q_o<=0;
        end
        else begin
-           data_i_o<=prod_ii_c-prod_qq_c;
-           data_q_o<=prod_iq_c+prod_qi_c;
+           data_i_o<=prod_ii-prod_qq;
+           data_q_o<=prod_iq+prod_qi;
        end
    end
    
