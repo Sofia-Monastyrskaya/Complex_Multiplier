@@ -65,66 +65,74 @@ module compl_mul_round_tb;
         #20;
         srst_i = 0;
         
-        // Test Case 1: Simple positive numbers (1 + j1) * (1 + j1) = 0 + j2
+        // Test 1
         #10;
-        data_a_i_i = 18'h00001; // 1.0
-        data_a_q_i = 18'h00001; // j1.0
-        data_b_i_i = 18'h10000; // 1.0
-        data_b_q_i = 18'h10000; // j1.0
+        data_a_i_i = 18'sh0_0001; 
+        data_a_q_i = 18'sh0_0000; 
+        data_b_i_i = 18'sh1_0000; 
+        data_b_q_i = 18'sh0_0000; 
         #10;
-        $display("Test 1: (1+j1)*(1+j1) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 1: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 2: Mixed signs (1 + j1) * (1 - j1) = 2 + j0
+        // Test 2
         #10;
-        data_a_i_i = 18'h10000; // 1.0
-        data_a_q_i = 18'h10000; // j1.0
-        data_b_i_i = 18'h10000; // 1.0
-        data_b_q_i = 18'h1FFFF; // -j1.0 (two's complement)
+        data_a_i_i = 18'sh0_0001; 
+        data_a_q_i = 18'sh0_0001; 
+        data_b_i_i = 18'sh1_0000; 
+        data_b_q_i = 18'sh1_0000; 
         #10;
-        $display("Test 2: (1+j1)*(1-j1) = %d + j%d", data_i_o, data_q_o);
+        $display("Test 2: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 3: Negative numbers (-1 - j1) * (-1 - j1) = 0 + j2
+        // Test 3
         #10;
-        data_a_i_i = 18'h1FFFF; // -1.0
-        data_a_q_i = 18'h1FFFF; // -j1.0
-        data_b_i_i = 18'h1FFFF; // -1.0
-        data_b_q_i = 18'h1FFFF; // -j1.0
+        data_a_i_i = 18'sh0_0018; 
+        data_a_q_i = 18'sh0_0000; 
+        data_b_i_i = 18'sh1_5000; 
+        data_b_q_i = 18'sh0_0000; 
         #10;
         $display("Test 3: (-1-j1)*(-1-j1) = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 4: Fractional numbers (0.5 + j0.5) * (0.5 + j0.5) = 0 + j0.5
+        // Test 4
         #10;
-        data_a_i_i = 18'h08000; // 0.5
-        data_a_q_i = 18'h08000; // j0.5
-        data_b_i_i = 18'h08000; // 0.5
-        data_b_q_i = 18'h08000; // j0.5
+        data_a_i_i = 18'sh2_0018; 
+        data_a_q_i = 18'sh0_0000; 
+        data_b_i_i = 18'sh1_5000; 
+        data_b_q_i = 18'sh0_0000; 
         #10;
         $display("Test 4: (0.5+j0.5)*(0.5+j0.5) = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 5: Rounding test (0.5 + j0) * (0.0000152587890625 + j0) 
-        // Should round up to 1 in the output (0x8000 * 0x0001 = 0x8000, which when rounded becomes 0x00001)
+        // Test 5
         #10;
-        data_a_i_i = 18'h08000; // 0.5
-        data_a_q_i = 18'h00000; // j0
-        data_b_i_i = 18'h00001; // ~0.000015
-        data_b_q_i = 18'h00000; // j0
+        data_a_i_i = 18'sh0_0018; 
+        data_a_q_i = 18'sh0_0000; 
+        data_b_i_i = 18'sh3_5000; 
+        data_b_q_i = 18'sh0_0000; 
         #10;
         $display("Test 5: Rounding test = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 6: Maximum values (to test overflow handling)
+        // Test 6
         #10;
-        data_a_i_i = 18'h17FFF; // ~0.99997
-        data_a_q_i = 18'h17FFF; // j~0.99997
-        data_b_i_i = 18'h17FFF; // ~0.99997
-        data_b_q_i = 18'h17FFF; // j~0.99997
+        data_a_i_i = 18'shF_FFFF; 
+        data_a_q_i = 18'shA_AAAA; 
+        data_b_i_i = 18'sh3_5000; 
+        data_b_q_i = 18'sh1_8000; 
         #10;
         $display("Test 6: Max values = %d + j%d", data_i_o, data_q_o);
+
+        // Test 7
+        #10;
+        data_a_i_i = 18'sh1_FFFF; 
+        data_a_q_i = 18'sh0_0000; 
+        data_b_i_i = 18'sh1_FFFF; 
+        data_b_q_i = 18'sh0_0000; 
+        #10;
+        $display("Test 7: Max values = %d + j%d", data_i_o, data_q_o);
         
-        // Test Case 7: Reset test
+        // Test Case 8
         #10;
         srst_i = 1;
         #10;
-        $display("Test 7: After reset = %d + j%d", data_i_o, data_q_o);
+        $display("Test 8: After reset = %d + j%d", data_i_o, data_q_o);
         srst_i = 0;
         
         #20;
